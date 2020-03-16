@@ -22,7 +22,9 @@
 - **参数量**：模型所有带参数的层的权重参数总量；
 - **特征图**：模型在实时运行过程中每层所计算出的输出特征图大小。
 
-
+![s](https://latex.codecogs.com/gif.latex?\frac{a}{b})
+<img src="http://latex.codecogs.com/gif.latex?\frac{\partial J}{\partial \theta_k^{(j)}}=\sum_{i:r(i,j)=1}{\big((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\big)x_k^{(i)}}+\lambda \theta_k^{(j)}" />
+![](http://latex.codecogs.com/gif.latex?\\frac{\\partial J}{\\partial \\theta_k^{(j)}}=\\sum_{i:r(i,j)=1}{\\big((\\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\\big)x_k^{(i)}}+\\lambda \\xtheta_k^{(j)})
 
 # 2 学习率策略
 
