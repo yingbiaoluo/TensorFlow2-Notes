@@ -1,12 +1,9 @@
 <center><b><font size=6 face='华文细黑'>TensorFlow学习笔记</font></b></center>
 
 
-[TOC]
-
 # 简介
 
 本讲目标：学会神经网络优化过程，使用正则化减少过拟合，使用优化器更新网络参数。
-
 
 
 # 1 神经网络复杂度
