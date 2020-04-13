@@ -1,4 +1,4 @@
-<center><b><font size=6 face='华文细黑'>TensorFlow学习笔记</font></b></center>
+<center><b><font size=6>TensorFlow学习笔记</font></b></center>
 
 
 # 简介
@@ -19,8 +19,6 @@
 - **参数量**：模型所有带参数的层的权重参数总量；
 - **特征图**：模型在实时运行过程中每层所计算出的输出特征图大小。
 
-![s](https://latex.codecogs.com/gif.latex?\frac{a}{b})
-
 
 # 2 学习率策略
 
@@ -28,10 +26,14 @@
 
 ​		<font size=4 color=red>**TensorFlow API:**  [tf.keras.optimizers.schedules.ExponentialDecay](#jump1) </font>
 
-<img src="./images/tf_function/output_42_0.png" alt="output_42_0" style="zoom:80%;" />
+<div align=center>
+<img width="600" src="./images/tf_function/ExponentialDecay.png"/>
+</div>
+
 $$
 decayed\_learning\_rate=learning\_rate\cdot decay\_rate^{(global\_step/decay\_steps)}
 $$
+
 ​		其中，$learning\_rate$是初始学习率，$decay\_rate$是衰减率，$global\_step$表示从0到当前的训练次数，$decay\_steps$用来控制衰减速度。
 
 ​		指数衰减学习率是先使用较大的学习率来快速得到一个较优的解，然后随着迭代的继续,逐步减小学习率，使得模型在训练后期 更加稳定。指数型学习率衰减法是最常用的衰减方法，在大量模型中都广泛使用。
@@ -40,7 +42,9 @@ $$
 
 ​		<font size=4 color=red>**TensorFlow API:**  [tf.optimizers.schedules.PiecewiseConstantDecay](#jump2) </font>
 
-<img src="/Users/luoyingbiao/Downloads/markdown笔记/TensorFlow笔记(2)图片/tf_function/output_44_0.png" alt="output_44_0" style="zoom:80%;" />
+<div align=center>
+<img width="600" src="./images/tf_function/PiecewiseConstantDecay.png"/>
+</div>
 
 ​		分段常数衰减可以让调试人员针对不同任务设置不同的学习率，进行**精细调参**，在任意步长后下降任意数值的learning rate，要求调试人员对模型和数据集有深刻认识.
 
@@ -76,11 +80,15 @@ $$
 f(x)=\frac{1}{1+e^{-x}}
 $$
 
-<img src="/Users/luoyingbiao/Library/Application Support/typora-user-images/image-20200304233627657.png" alt="image-20200304233627657" style="zoom:10%;" />
+<div align=center>
+<img width="600" src="./images/plot_activation_func/sigmoid_plot.png"/>
+</div>
 
 <center>函数图像</center>
 
-<img src="/Users/luoyingbiao/Library/Application Support/typora-user-images/image-20200304235026091.png" alt="image-20200304235026091" style="zoom:10%;" />
+<div align=center>
+<img width="600" src="./images/plot_activation_func/sigmoid_derivative_plot.png"/>
+</div>
 
 <center>导数图像</center>
 
@@ -121,13 +129,13 @@ $$
 
 **<font size=4>优点</font>**：
 
-1. <font face='华文细黑'>比sigmoid函数收敛速度更快。</font>
-2. <font face='华文细黑'>相比sigmoid函数，其输出以0为中心。</font>
+1. 比sigmoid函数收敛速度更快。
+2. 相比sigmoid函数，其输出以0为中心。
 
 **<font size=4>缺点</font>**：
 
-1. <font face='华文细黑'>易造成梯度消失；</font>
-2. <font face='华文细黑'>幂运算复杂，训练时间长。</font>
+1. 易造成梯度消失；
+2. 幂运算复杂，训练时间长。
 
 ## 3.3 ReLU
 
