@@ -15,6 +15,20 @@
   <script>
     window.$docsify = {
       name: '',
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function(content) {
+            // 每次开始解析 Markdown 内容时调用
+            // 将所有../img替换成img
+            // https://github.com/docsifyjs/docsify/issues/936
+            return content.replace(/..\/img/g, "img");
+          })
+
+          hook.doneEach(function () {
+            window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')]);
+          })
+        }
+      ],
       repo: 'https://github.com/yingbiaoluo/TensorFlow2-Notes'
     },
     markdown{
@@ -22,5 +36,25 @@
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"]
+      },
+      "HTML-CSS": { fonts: ["TeX"] }
+    });
+  </script>
+  <script src="docsify.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-python.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
