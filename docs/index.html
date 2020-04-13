@@ -9,12 +9,16 @@
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//unpkg.com/katex/dist/katex.min.css">
   <script src="//unpkg.com/katex/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: '',
+      markdown{
+        latexRender: katex.renderToString.bind(katex)
+      },
       plugins: [
         function(hook, vm) {
           hook.beforeEach(function(content) {
@@ -30,9 +34,6 @@
         }
       ],
       repo: 'https://github.com/yingbiaoluo/TensorFlow2-Notes'
-    },
-    markdown{
-      latexRender: katex.renderToString.bind(katex)
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
